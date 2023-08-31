@@ -1,31 +1,27 @@
-// first
-import java.util.Scanner;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        try (Scanner scanner = new Scanner(Paths.get("DNA_data.txt"))) {
+        String fileName = "DNA_data.txt";
+        StringBuilder result = new StringBuilder();
 
-            // we read the file until all lines have been read
-            while (scanner.hasNextLine()) {
-                // we read one line
-                String row = scanner.nextLine();
-                // we print the line that we read
-                System.out.println(row);
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("A") || line.startsWith("T") || line.startsWith("C") || line.startsWith("G")) {
+                    result.append(line).append("\n");
+                }
             }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-
-
-
-
-
-
-
-
-
-
+        System.out.println(result);
+        //diviser la string result par le /n
+        String[] lines = result.toString().split("\n");
+        System.out.println(lines[0]);
     }
 }
+
