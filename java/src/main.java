@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class main {
     public static void main(String[] args) {
         String fileName = "DNA_data.txt";
+        //read the file
         StringBuilder result = new StringBuilder();
         System.out.println("Voici les séquences enregistrées : ");
 
@@ -16,18 +17,18 @@ public class main {
                     result.append(line).append("\n");
                 }
             }
-        } catch (IOException e) {
+        } catch (IOException e) { //in case of error
             e.printStackTrace();
         }
 
         System.out.println(result);
-        //diviser la string result par le /n
+        //divide string by the separator "/n"
         String[] lines = result.toString().split("\n");
+        //navigation of the user
         for (int i = 0; i < lines.length; i++) {
             System.out.println((i+1) + "-" + lines[i]);}
         System.out.println("~~~~~~Choisir les deux sequences a comparer~~~~~~~~");
-        //écris un input contenant le numéro de la séquence qui est entre 1 et 10
-        //si le numéro est plus grand que 10 ou plus petit que 1, il faut réécrire le numéro
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Entrer le numero de la premiere sequence : ");
         int num1 = scanner.nextInt();
@@ -47,18 +48,14 @@ public class main {
         String Str2 = lines[num2-1];
         scanner.close();
 
-        System.out.println(Str1 + "\n" + Str2);
+        System.out.println(Str1 + " et " + Str2);
 
-
-
-
-        System.out.println("Entrer le numero de la deuxieme sequence : ");
 
         int N = Math.max(Str1.length()+1, Str2.length()+1);
 
         int[][] H = procedure_SW(Str1,Str2,N);
 
-        //Affichage de la matrice en ajoutant les lettres en haut et à gauche en rouge
+        //display the matrix with the sequences
         System.out.print("  ");
         System.out.print("  ");
         for (int i = 0; i < Str1.length(); i++) {
@@ -78,9 +75,7 @@ public class main {
             System.out.println();
         }
 
-
-
-        //Affichage de la valeur maximale contenue dans H
+        //display the score max
         int max = 0;
         int row = 0;
         int column = 0;
@@ -121,7 +116,7 @@ public class main {
         }
         return H;
     }
-
+    //calcul of the distance
     public static int calculateDistance(int[][] H, int Row, int Column, int score) {
         int Gap = -2;
 
