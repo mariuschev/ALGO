@@ -89,6 +89,9 @@ public class main {
             }
         }
         System.out.println("\u001B[1m" + "Score max : " + max);
+        //afficher le pourcentage de correspondance
+        int pourcentage = (max*100)/Str1.length();
+        System.out.println("\u001B[1m" + "Pourcentage de correspondance entre " + Str1 + " et " + Str2 + " : " + pourcentage + "%");
 
     }
     public static int[][] procedure_SW(String Str1, String Str2, int N){
