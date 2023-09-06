@@ -8,7 +8,7 @@ public class main {
         String fileName = "DNA_data.txt";
         //read the file
         StringBuilder result = new StringBuilder();
-        System.out.println("Voici les séquences enregistrées : ");
+        System.out.println("Here are the recorded sequences : ");
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -27,28 +27,28 @@ public class main {
         //navigation of the user
         for (int i = 0; i < lines.length; i++) {
             System.out.println((i+1) + "-" + lines[i]);}
-        System.out.println("~~~~~~Choisir les deux sequences a comparer~~~~~~~~");
+        System.out.println("~~~~~~Choose two sequences to compare~~~~~~~~");
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Entrer le numero de la premiere sequence : ");
+        System.out.println("Enter the number of the first sequence: ");
         int num1 = scanner.nextInt();
 
         while (num1 > 10 || num1 < 1) {
-            System.out.println("Entrer le numero de la premiere sequence : ");
+            System.out.println("Enter the number of the first sequence: ");
             num1 = scanner.nextInt();
         }
         String Str1 = lines[num1-1];
 
-        System.out.println("Entrer le numero de la deuxième sequence : ");
+        System.out.println("Enter the number of the second sequence: ");
         int num2 = scanner.nextInt();
         while (num2 > 10 || num2 < 1) {
-            System.out.println("Entrer le numero de la deuxième sequence : ");
+            System.out.println("Enter the number of the second sequence: ");
             num2 = scanner.nextInt();
         }
         String Str2 = lines[num2-1];
         scanner.close();
 
-        System.out.println(Str1 + " et " + Str2);
+        System.out.println(Str1 + " and " + Str2);
 
 
         int N = Math.max(Str1.length()+1, Str2.length()+1);
@@ -91,7 +91,7 @@ public class main {
         System.out.println("\u001B[1m" + "Score max : " + max);
         //afficher le pourcentage de correspondance
         int pourcentage = (max*100)/Str1.length();
-        System.out.println("\u001B[1m" + "Pourcentage de correspondance entre " + Str1 + " et " + Str2 + " : " + pourcentage + "%");
+        System.out.println("\u001B[1m" + "Best match beetween " + Str1 + " and " + Str2 + " with the penalty gap : " + pourcentage + "%");
 
     }
     public static int[][] procedure_SW(String Str1, String Str2, int N){
